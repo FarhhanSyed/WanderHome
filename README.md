@@ -1,15 +1,11 @@
 # WanderHome 🏡
-A MERN stack project inspired by Airbnb. Find your perfect getaway!
+A MERN Stack Project fot Booking Unique Stays WorldWide.
 
-![Project Banner](assets/banner.png)
+![Project Banner](assets/1.png)
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)  
 ![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)  
 
-## Features
-- Search and filter vacation rentals.
-- User authentication with JWT.
-- Real-time booking system.
 
 ## Installation
 ```bash
