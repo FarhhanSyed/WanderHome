@@ -1,5 +1,5 @@
 # WanderHome 🏡
-A MERN Stack Project for Booking Unique Stays WorldWide...
+A MERN Stack Project for Booking Unique Stays WorldWide..
 
 ![Project Banner](assets/1.png)
 
