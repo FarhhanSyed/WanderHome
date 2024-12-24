@@ -7,5 +7,14 @@
 </head>
 <body>
     <h1>All Listings</h1>
+    <% for(let listing of allListing){ %>
+        <div>
+            <h2><%=listing.title%></h2>
+            <p><%=listing.description%></p>
+            <img src=<%=listing.image%>>
+            <p><%=listing.price%></p>
+            <p><%=listing.location%></p>
+        </div>
+    <% } %>
 </body>
 </html>
