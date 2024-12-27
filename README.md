@@ -1,5 +1,5 @@
 # WanderHome 🏡
-A FULL Stack Project for Booking Unique Stays WorldWide..
+A FULL Stack Project for Booking Unique Stays WorldWide.
 
 ![Project Banner](assets/1.png)
 
