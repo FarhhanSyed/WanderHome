@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+<% layout("/layouts/boilerplate") %>
 <body>
-    <h1><%=listing.title%></h1>
+    <h2><%=listing.title%></h>
     <form method="GET" action="/listings/<%=listing._id%>/edit">
         <button>EDIT</button>
     </form>
@@ -21,4 +15,3 @@
         <li><img src="<%=listing.image%>"></li>
     </ul>
 </body>
-</html>
