@@ -33,7 +33,7 @@ app.get("/",(req,res)=>{
 //Index Route
 app.get("/listings",async (req,res)=>{
     const allListing=await Listing.find({});
-    res.render("listings/index.ejs",{allListing});
+    res.render("./listings/index.ejs",{allListing});
 })
 
 //New Route
