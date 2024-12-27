@@ -4,11 +4,7 @@ const mongoose=require("mongoose");
 const Listing = require("./models/listings.js");
 const path=require("path");
 const methodOverride=require("method-override");
-
-app.set("view engine","ejs");
-app.set("views",path.join(__dirname,"/views"));
-app.use(express.urlencoded({extended:true}));
-app.use(methodOverride('_method'));
+const ejsMate=require("ejs-mate");
 
 const mongooseURL="mongodb://127.0.0.1:27017/WanderHome";
 async function main() {
@@ -23,6 +19,12 @@ main()
     console.log(err);
 })
 
+app.set("view engine","ejs");
+app.set("views",path.join(__dirname,"/views"));
+app.use(express.urlencoded({extended:true}));
+app.use(methodOverride('_method'));
+app.engine("ejs",ejsMate);
+
 app.get("/",(req,res)=>{
     res.send("root working");
 })/
@@ -30,12 +32,12 @@ app.get("/",(req,res)=>{
 //Index Route
 app.get("/listings",async (req,res)=>{
     const allListing=await Listing.find({});
-    res.render("./listings/index.ejs",{allListing});
+    res.render("listings/index.ejs",{allListing});
 })
 
 //New Route
 app.get("/listings/new",(req,res)=>{
-    res.render("./listings/new.ejs");
+    res.render("listings/new.ejs");
 })
 
 //Post Route
@@ -49,14 +51,14 @@ app.post("/listings",async (req,res)=>{
 app.get("/listings/:id",async (req,res)=>{
     let {id}=req.params;    
     const listing=await Listing.findById(id);
-    res.render("./listings/show.ejs",{listing});
+    res.render("listings/show.ejs",{listing});
 })
 
 //Edit Route
 app.get("/listings/:id/edit",async (req,res)=>{
     let {id}=req.params;
     const listing=await Listing.findById(id);
-    res.render("./listings/edit.ejs",{listing});
+    res.render("listings/edit.ejs",{listing});
 })
 
 //Update Route
