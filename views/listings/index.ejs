@@ -1,6 +1,6 @@
 <% layout("/layouts/boilerplate") %>
 <body>
-    <!-- <h1>All Listings</h1> -->
+    <h2>All Listings</h2>
     <ul>
     <% for(let listing of allListing){ %>
         <li><a href="/listings/<%=listing._id%>"><%=listing.title%></a></li>
