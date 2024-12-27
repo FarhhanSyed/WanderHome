@@ -8,10 +8,14 @@
 }
 
 .fa-solid{
-    color:#fe424d;
+    color:black;
     font-size:2rem;
+    transition:0.3s;
 }
 
+.fa-solid:hover{
+    color:#fe424d;
+}
 .nav-link{
     color:#222222 !important;
     font-size:30px;
