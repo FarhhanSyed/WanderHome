@@ -78,7 +78,7 @@ app.delete("/listings/:id",async (req,res)=>{
 })
 
 // app.get("/listings",async (req,res)=>{
-//     let sample=new listing({
+//     let samples=new listing({
 //         title:"My home",
 //         description:"By the Beach",
 //         price:1900,

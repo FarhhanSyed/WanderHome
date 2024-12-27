@@ -1,22 +1,42 @@
-/* body{
-    background-color:antiquewhite
-} */
-
+/*Navbar*/
 .navbar{
     height:5rem;
     background-color: white;
 }
-
 .fa-solid{
     color:black;
     font-size:2rem;
     transition:0.3s;
 }
-
 .fa-solid:hover{
     color:#fe424d;
 }
 .nav-link{
     color:#222222 !important;
     font-size:30px;
+}
+
+/*Footer*/
+.f-info-socials a{
+    color:#222222;
+}
+.f-info-links a{
+    text-decoration: none;
+    color:#222222;
+}
+.f-info-links a:hover{
+    text-decoration: underline;
+}
+.f-info-socials{
+    width: 100%;
+}
+.f-info-links{
+    width:100%;
+}
+.f-info{
+    text-align: center;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: #ebebeb;
 }
