@@ -95,8 +95,14 @@ body {
     opacity: 0.2;
 }
 
-/*New listing*/
-.btn-img{
+/*New page*/
+.new-btn{
+    background-color: #fe424d !important;
+    border: none !important;
+}
+
+/*Edit Page*/
+.show-btn{
     background-color: #fe424d !important;
     border: none !important;
 }
