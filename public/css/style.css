@@ -81,3 +81,13 @@ body {
 .card-text p{
     font-weight: 400 !important;
 }
+
+/*Card Effect*/
+.card-img-overlay{
+    opacity: 0;
+}
+.card-img-overlay:hover{
+    background-color: white;
+    opacity: 0.2;
+}
+
