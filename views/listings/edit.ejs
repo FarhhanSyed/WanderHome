@@ -3,20 +3,25 @@
     <div class="row mt-3">
         <div class="col col-8 offset-2">
             <h2>Edit Listing</h2>
-            <form method="POST" action="/listings/<%=listing._id%>?_method=PATCH">
+            <form method="POST" action="/listings/<%=listing._id%>?_method=PATCH" class="needs-validation" novalidate>
                 <div class="mb-3">
                     <label for="title" class="form-label">Title</label>
                     <input value="<%=listing.title%>" 
                     name="listing[title]" 
                     class="form-control" 
-                    type="text">
+                    type="text"
+                    required
+                    />
                 </div>
 
                 <div class="mb-3">
                     <label for="description" class="form-label">Description</label>
                     <textarea name="listing[description]" 
                         rows="5" cols="30" 
-                        class="form-control"><%=listing.description%>
+                        class="form-control"
+                        required
+                        >
+                        <%=listing.description%>
                     </textarea>
                 </div>
 
@@ -25,7 +30,7 @@
                     <input value="<%=listing.image%>" 
                     name="listing[image]" 
                     class="form-control" 
-                    type="text">
+                    type="text"/>
                 </div>
 
                 <div class="row">
@@ -34,7 +39,9 @@
                         <input value="<%=listing.price%>" 
                         name="listing[price]" 
                         class="form-control" 
-                        type="number">
+                        type="number"
+                        required
+                        />
                     </div>
 
                     <div class="mb-3 col-md-8">
@@ -42,7 +49,9 @@
                         <input value="<%=listing.country%>" 
                         name="listing[country]" 
                         class="form-control" 
-                        type="text">
+                        type="text"
+                        required
+                        />
                     </div>
                 </div>
 
@@ -51,7 +60,9 @@
                     <input value="<%=listing.location%>" 
                     name="listing[location]" 
                     class="form-control" 
-                    type="text">
+                    type="text"
+                    required
+                    /w>
                 </div>
 
                 <button class="btn btn-dark show-btn mt-3">Edit</button>

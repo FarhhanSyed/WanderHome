@@ -5,6 +5,7 @@ const Listing = require("./models/listings.js");
 const path=require("path");
 const methodOverride=require("method-override");
 const ejsMate=require("ejs-mate");
+const wrapAsync=require("./utils/wrapAsync.js")
 
 const mongooseURL="mongodb://127.0.0.1:27017/WanderHome";
 async function main() {
@@ -42,11 +43,11 @@ app.get("/listings/new",(req,res)=>{
 })
 
 //Post Route
-app.post("/listings",async (req,res)=>{
+app.post("/listings",wrapAsync(async (req,res,next)=>{
     const newListing=new Listing(req.body.listing);
     await newListing.save();
     res.redirect("/listings");
-})
+}))
 
 //Show Route
 app.get("/listings/:id",async (req,res)=>{
@@ -89,6 +90,10 @@ app.delete("/listings/:id",async (req,res)=>{
 //     console.log("sample data saved");
 //     res.send("sample data working");
 // })
+
+app.use((err,req,res,next)=>{
+    res.send("something went wrong");
+})
 
 app.listen(8080,()=>{
     console.log(`Server started on port 8080`);
