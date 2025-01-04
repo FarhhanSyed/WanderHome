@@ -5,7 +5,8 @@ const Listing = require("./models/listings.js");
 const path=require("path");
 const methodOverride=require("method-override");
 const ejsMate=require("ejs-mate");
-const wrapAsync=require("./utils/wrapAsync.js")
+const wrapAsync=require("./utils/wrapAsync.js");
+const expressError=require("./utils/expressError.js");
 
 const mongooseURL="mongodb://127.0.0.1:27017/WanderHome";
 async function main() {
@@ -92,7 +93,8 @@ app.delete("/listings/:id",async (req,res)=>{
 // })
 
 app.use((err,req,res,next)=>{
-    res.send("something went wrong");
+    let {status=500,message="Something went wrong"}=err;
+    res.status(status).send(message);
 })
 
 app.listen(8080,()=>{
