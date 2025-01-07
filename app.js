@@ -7,6 +7,7 @@ const methodOverride=require("method-override");
 const ejsMate=require("ejs-mate");
 const wrapAsync=require("./utils/wrapAsync.js");
 const expressError=require("./utils/expressError.js");
+const {listingSchema}=require("./schema.js");
 const exp = require("constants");
 
 const mongooseURL="mongodb://127.0.0.1:27017/WanderHome";
@@ -31,7 +32,18 @@ app.use(express.static(path.join(__dirname,"/public")));
 
 app.get("/",(req,res)=>{
     res.send("root working");
-})/
+})
+
+const validatListing=(req,res,next)=>{
+    let {error}=listingSchema.validate(req.body);
+    if(error)
+    {
+        let errMsg=error.details.map((ele)=>ele.message).join(",");
+        throw new expressError(400,errMsg);
+    }else{
+        next();
+    }
+}
 
 //Index Route
 app.get("/listings",wrapAsync(async (req,res)=>{
@@ -46,17 +58,14 @@ app.get("/listings/new",(req,res)=>{
 
 //Post Route
 app.post("/listings",wrapAsync(async (req,res,next)=>{
-        if(!req.body.listing)
-        {
-            throw new expressError(400,"Give valid Data");
-        }
-        const newListing=new Listing(req.body.listing);
-        if(!newListing.description)
-        {
-            throw new expressError(400,"Description is missing");
-        }
-        await newListing.save();
-        res.redirect("/listings");
+    let result=listingSchema.validate(req.body);
+    if(result.error)
+    {
+        throw new expressError(400,result.error);
+    }
+    const newListing=new Listing(req.body.listing);
+    await newListing.save();
+    res.redirect("/listings");
     }
 ))
 
