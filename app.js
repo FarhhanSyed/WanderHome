@@ -9,6 +9,7 @@ const wrapAsync=require("./utils/wrapAsync.js");
 const expressError=require("./utils/expressError.js");
 const {listingSchema}=require("./schema.js");
 const exp = require("constants");
+const Review=require("./models/reviews.js");
 
 const mongooseURL="mongodb://127.0.0.1:27017/WanderHome";
 async function main() {
@@ -101,6 +102,18 @@ app.delete("/listings/:id",wrapAsync(async (req,res)=>{
     console.log(deletedListing);
     res.redirect("/listings");
 }))
+
+//Post
+//Review route
+app.post("/listings/:id/reviews",async(req,res)=>{
+    let listing=await Listing.findById(req.params.id);
+    let newReview=new Review(req.body.review);
+
+    listing.reviews.push(newReview);
+    await newReview.save();
+    await listing.save();
+    res.redirect(`/listings/${listing._id}`);
+})
 
 // app.get("/listings",async (req,res)=>{
 //     let samples=new listing({
