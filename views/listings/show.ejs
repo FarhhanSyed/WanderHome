@@ -4,7 +4,7 @@
         <div class="col-8 offset-3">
             <h2> <%=listing.title%></h2>
         </div>
-        <div class="card col-6 offset-3 show-card">
+        <div class="card col-6 offset-3 show-card listing-card">
             <img src="<%=listing.image%>" class="card-img-top show-img mb-1" alt="listing-image">
             <div class="card-body">
                 <p class="card-text ">
@@ -32,7 +32,7 @@
         <form method="POST" action="/listings/<%=listing._id%>/reviews" class="needs-validation" novalidate>
         <div class="mb-2">
             <label for="rating" class="form-label">Rating:</label>
-            <input type="range" min="1" max="5" name="review[rating]">
+            <input type="range" min="1" max="5" name="review[rating]" class="form-class">
         </div>
         <div class="mb-2">
             <label for="comment" class="form-label">Comment:</label><br>
@@ -46,5 +46,21 @@
         </div>
         <button class="btn btn-outline-dark">Submit</button>
         </form>
+    </div>
+    <hr>
+    <div class="col-8 offset-3">
+    <p><b>All Reviews</b></p>
+        <div class="row">
+        <%for(let review of listing.reviews) { %>
+        <div class="card col-5 mb-3 ms-2">
+            <h5 class="card-title">Syed Farhan</h5>
+            <p class="card-text"><%=review.comment%></p>
+            <p class="card-text"><%=review.rating%> stars</p>
+            <form class="mb-2" method="POST" action="/listings/<%=listing._id%>/reviews/<%=review._id%>?_method=DELETE">
+                <button class="btn btn-outline-dark">Delete</button>
+            </form>
+        </div>
+        <% } %>
+        </div>
     </div>
 </body>
