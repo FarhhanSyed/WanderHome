@@ -36,6 +36,7 @@ router.post("/",validateListing,wrapAsync(async (req,res,next)=>{
     }
     const newListing=new Listing(req.body.listing);
     await newListing.save();
+    req.flash("success","New Listing created");
     res.redirect("/listings");
     }
 ))
@@ -62,6 +63,7 @@ router.patch("/:id",wrapAsync(async (req,res)=>{
     {
         throw new expressError(400,"Give valid Data");
     }
+    req.flash("success","Listing Updated");
     res.redirect(`/listings/${id}`);
 }))
 
@@ -70,6 +72,7 @@ router.delete("/:id",wrapAsync(async (req,res)=>{
     let {id}=req.params;
     let deletedListing=await Listing.findByIdAndDelete(id);
     console.log(deletedListing);
+    req.flash("success","Listing Deleted");
     res.redirect("/listings");
 }))
 
