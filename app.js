@@ -11,8 +11,9 @@ const passport=require("passport");
 const LocalStrategy=require("passport-local");
 const User=require("./models/user.js");
 
-const listings=require("./routes/listing.js");
-const reviews=require("./routes/review.js");
+const listingRouter=require("./routes/listing.js");
+const reviewRouter=require("./routes/review.js");
+const userRouter=require("./routes/user.js");
 
 const mongooseURL="mongodb://127.0.0.1:27017/WanderHome";
 async function main() {
@@ -66,17 +67,18 @@ app.use((req,res,next)=>{
     next();
 })
 
-app.get("/demo",async (req,res)=>{
-    let fakeUser=new User({
-        email:"syed@123",
-        username:"rocky",
-    });
-    let registeresUser=await User.register(fakeUser,"hello");
-    res.send(registeresUser);
-})
+// app.get("/demo",async (req,res)=>{
+//     let fakeUser=new User({
+//         email:"syed@123",
+//         username:"rocky",
+//     });
+//     let registeresUser=await User.register(fakeUser,"hello");
+//     res.send(registeresUser);
+// })
 
-app.use("/listings",listings);
-app.use("/listings/:id/reviews",reviews);
+app.use("/listings",listingRouter);
+app.use("/listings/:id/reviews",reviewRouter);
+app.use("/",userRouter);
 
 app.all("*",(req,res,next)=>{
     next(new expressError(404,"Page Not Found!"));
