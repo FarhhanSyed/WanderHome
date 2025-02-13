@@ -1,4 +1,5 @@
 const mongoose=require("mongoose");
+const Schema = mongoose.Schema;
 
 const reviewSchema=new mongoose.Schema({
     rating:{
@@ -10,6 +11,10 @@ const reviewSchema=new mongoose.Schema({
     createdAt:{
         type:Date,
         deafult:Date.now(),
+    },
+    author:{
+        type:Schema.Types.ObjectId,
+        ref:"User"
     }
 });
 
