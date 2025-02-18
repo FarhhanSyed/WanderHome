@@ -10,7 +10,7 @@ const reviewSchema=new mongoose.Schema({
     comment:String,
     createdAt:{
         type:Date,
-        deafult:Date.now(),
+        default:Date.now(),
     },
     author:{
         type:Schema.Types.ObjectId,

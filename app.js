@@ -36,7 +36,7 @@ app.engine("ejs",ejsMate);
 app.use(express.static(path.join(__dirname,"/public")));
 
 app.get("/",(req,res)=>{
-    res.send("root working");
+    res.send("root working");   
 })
 
 const sessionOptions={
