@@ -1,5 +1,6 @@
 const Listing = require("../models/listings");
 const { listingSchema } = require("../schema");
+const ExpressError = require("../utils/expressError");
 
 module.exports.indexListing = async (req, res) => {
   const allListing = await Listing.find({});
@@ -13,7 +14,7 @@ module.exports.renderNewListing = (req, res) => {
 module.exports.postListing = async (req, res, next) => {
   let result = listingSchema.validate(req.body);
   if (result.error) {
-    throw new expressError(400, result.error);
+    throw new ExpressError(400, result.error.message);
   }
   const newListing = new Listing(req.body.listing);
   newListing.owner = req.user._id;
@@ -47,7 +48,7 @@ module.exports.renderEditForm = async (req, res) => {
 module.exports.editListing = async (req, res) => {
   let { id } = req.params;
   if (!req.body.listing) {
-    throw new expressError(400, "Give valid Data");
+    throw new ExpressError(400, "Give valid Data");
   }
   await Listing.findByIdAndUpdate(id, { ...req.body.listing });
   req.flash("success", "Listing Updated");
