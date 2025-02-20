@@ -5,7 +5,7 @@
             <h2> <%=listing.title%></h2>
         </div>
         <div class="card col-6 offset-3 show-card listing-card">
-            <img src="<%=listing.image%>" class="card-img-top show-img mb-1" alt="listing-image">
+            <img src="<%=listing.image.url%>" class="card-img-top show-img mb-1" alt="listing-image">
             <div class="card-body">
                 <p class="card-text ">
                     <br>
@@ -75,8 +75,8 @@
         <%for(let review of listing.reviews) { %>
         <div class="card col-5 mb-3 ms-2">
             <h5 class="card-title"><%= review.author.username%></h5>
+            <p class="starability-result" data-rating="<%=review.rating%>"></p>
             <p class="card-text"><%=review.comment%></p>
-            <p class="card-text"><%=review.rating%></p>
             <form class="mb-2" method="POST" action="/listings/<%=listing._id%>/reviews/<%=review._id%>?_method=DELETE">
                 <button class="btn btn-outline-dark">Delete</button>
             </form>

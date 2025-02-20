@@ -26,10 +26,9 @@ module.exports.validateListing=(req,res,next)=>{
     if(error)
     {
         let errMsg=error.details.map((ele)=>ele.message).join(",");
-        throw new expressError(400,errMsg);
-    }else{
-        next();
+        return next(new ExpressError(errMsg, 400));
     }
+    next();
 }
 
 module.exports.validateReview=(req,res,next)=>{

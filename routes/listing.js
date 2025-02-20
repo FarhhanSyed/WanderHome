@@ -6,6 +6,9 @@ const expressError = require("../utils/expressError.js");
 const { listingSchema } = require("../schema.js");
 const { isLoggedIn, validateListing, isOwner } = require("../middleware.js");
 const listingController = require("../controllers/listing.js");
+const multer = require("multer");
+const { storage } = require("../cloudStorage.js");
+const upload = multer({ storage });
 
 //Index Route
 router.get("/", wrapAsync(listingController.indexListing));
@@ -14,7 +17,13 @@ router.get("/", wrapAsync(listingController.indexListing));
 router.get("/new", isLoggedIn, listingController.renderNewListing);
 
 //Post Route
-router.post("/", validateListing, wrapAsync(listingController.postListing));
+router.post(
+  "/",
+  isLoggedIn,
+  upload.single("listing[image]"),
+  validateListing,
+  wrapAsync(listingController.postListing)
+);
 
 //Show Route
 router.get("/:id", wrapAsync(listingController.showListing));

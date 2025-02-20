@@ -12,11 +12,15 @@ module.exports.renderNewListing = (req, res) => {
 };
 
 module.exports.postListing = async (req, res, next) => {
+  let url=req.file.path;
+  let filename=req.file.filename;
   let result = listingSchema.validate(req.body);
   if (result.error) {
     throw new ExpressError(400, result.error.message);
   }
   const newListing = new Listing(req.body.listing);
+  newListing.image.url=url;
+  newListing.image.filename=filename;
   newListing.owner = req.user._id;
   await newListing.save();
   req.flash("success", "New Listing created");
