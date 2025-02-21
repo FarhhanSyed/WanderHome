@@ -1,5 +1,5 @@
 # WanderHome 🏡
-A FULL Stack Project for Booking Unique Stays WorldWide using MVC FrameWork..
+A FULL Stack Project for Booking Unique Stays WorldWide using MVC FrameWork...
 
 ![Project Banner](assets/1.png)
 
