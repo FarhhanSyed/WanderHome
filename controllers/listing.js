@@ -12,15 +12,15 @@ module.exports.renderNewListing = (req, res) => {
 };
 
 module.exports.postListing = async (req, res, next) => {
-  let url=req.file.path;
-  let filename=req.file.filename;
+  let url = req.file.path;
+  let filename = req.file.filename;
   let result = listingSchema.validate(req.body);
   if (result.error) {
     throw new ExpressError(400, result.error.message);
   }
   const newListing = new Listing(req.body.listing);
-  newListing.image.url=url;
-  newListing.image.filename=filename;
+  newListing.image.url = url;
+  newListing.image.filename = filename;
   newListing.owner = req.user._id;
   await newListing.save();
   req.flash("success", "New Listing created");
@@ -51,10 +51,14 @@ module.exports.renderEditForm = async (req, res) => {
 
 module.exports.editListing = async (req, res) => {
   let { id } = req.params;
-  if (!req.body.listing) {
-    throw new ExpressError(400, "Give valid Data");
+
+  let listing = await Listing.findByIdAndUpdate(id, { ...req.body.listing });
+  if (typeof req.file !== "undefined") {
+    let url = req.file.path;
+    let filename = req.file.filename;
+    listing.image = { url, filename };
+    await listing.save();
   }
-  await Listing.findByIdAndUpdate(id, { ...req.body.listing });
   req.flash("success", "Listing Updated");
   res.redirect(`/listings/${id}`);
 };
