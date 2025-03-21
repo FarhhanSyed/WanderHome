@@ -14,14 +14,34 @@ body {
     height:5rem;
     background-color: white;
 }
-.fa-solid{
+.logo{
     color:#fe424d;
     font-size:2rem;
+    margin-left: 4rem;
+    font-size: 2.2rem;
+}
+
+.navbar-brand .wanderhome{
+    color: #fe424d !important;
+    font-weight: 500;
+    font-size: 1.4rem;
 }
 
 .nav-link{
     color:#222222 !important;
     font-size:30px;
+}
+
+.navbar-nav #new{
+    font-size: 1rem;
+    font-weight: 500;
+    margin-right: 0.3rem;
+}
+
+.navbar-nav #new:hover{
+    border: 0px solid;
+    background-color: rgba(176, 175, 175,0.2);
+    border-radius:1.2rem;
 }
 
 /*Footer*/

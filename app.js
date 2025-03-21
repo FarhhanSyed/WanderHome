@@ -1,5 +1,5 @@
-if(process.env.NODE_ENV!="production"){
-    require("dotenv").config();
+if (process.env.NODE_ENV != "production") {
+  require("dotenv").config();
 }
 
 const express = require("express");
@@ -40,7 +40,7 @@ app.engine("ejs", ejsMate);
 app.use(express.static(path.join(__dirname, "/public")));
 
 app.get("/", (req, res) => {
-  res.send("root working");
+  res.render("./listings/index.ejs");
 });
 
 const sessionOptions = {
