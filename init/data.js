@@ -36,7 +36,7 @@ const sampleListings = [
     price: 1000,
     location: "Aspen",
     country: "United States",
-    geometry: { type: "Point", coordinates: [106.8175, 39.1911] },
+    geometry: { type: "Point", coordinates: [75.7139, 15.3173] },
   },
   {
     title: "Historic Villa in Tuscany",
@@ -192,7 +192,7 @@ const sampleListings = [
     price: 1800,
     location: "Bali",
     country: "Indonesia",
-    geometry: { type: "Point", coordinates: [115.1889, 8.4095] },
+    geometry: { type: "Point", coordinates: [113.9213, 0.7893] },
   },
   {
     title: "Mountain View Cabin in Banff",

@@ -1,24 +1,30 @@
-const mongoose=require("mongoose");
-const initData=require("./data.js");
-const Listing=require("../models/listings");
+const path = require("path");
+require("dotenv").config({ path: path.resolve(__dirname, "../.env") });
+const mongoose = require("mongoose");
+const initData = require("./data.js");
+const Listing = require("../models/listings");
 
-const mongooseURL="mongodb://127.0.0.1:27017/WanderHome";
+const dbUrl = process.env.DB_URL;
+// console.log(dbUrl);
 async function main() {
-    await mongoose.connect(mongooseURL);
+  await mongoose.connect(dbUrl);
 }
 
 main()
-.then(()=>{
+  .then(() => {
     console.log("Connection Successfull");
-})
-.catch((err)=>{
+  })
+  .catch((err) => {
     console.log(err);
-});
+  });
 
-const initDB=async ()=>{
-    await Listing.deleteMany({});
-    initData.data=initData.data.map((obj)=>({...obj,owner:"67ab35b697500c74242d94b5"}));
-    await Listing.insertMany(initData.data);
-    console.log("Initialized Database");
-}
+const initDB = async () => {
+  await Listing.deleteMany({});
+  initData.data = initData.data.map((obj) => ({
+    ...obj,
+    owner: "67de85ba16f6a0ef69bc63db",
+  }));
+  await Listing.insertMany(initData.data);
+  console.log("Initialized Database");
+};
 initDB();
