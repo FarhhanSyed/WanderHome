@@ -32,8 +32,7 @@
     <script src="https://api.mapbox.com/mapbox-gl-js/v3.10.0/mapbox-gl.js"></script>
   </head>
   <body>
-    <%- include("../includes/navbar.ejs") %>
-    <% console.log("currUser in template:", currUser); %>
+    <%- include("../includes/navbar.ejs", { currUser: currUser }) %>
     <div class="container">
       <%-include("../includes/flash.ejs") %> <%- body%>
     </div>
