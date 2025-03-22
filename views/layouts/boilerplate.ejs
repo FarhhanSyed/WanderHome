@@ -32,7 +32,7 @@
     <script src="https://api.mapbox.com/mapbox-gl-js/v3.10.0/mapbox-gl.js"></script>
   </head>
   <body>
-    <%- include("../includes/navbar.ejs", { currUser: currUser }) %>
+    <%- include("../includes/navbar.ejs",{ currUser: currUser || null }) %>
     <div class="container">
       <%-include("../includes/flash.ejs") %> <%- body%>
     </div>

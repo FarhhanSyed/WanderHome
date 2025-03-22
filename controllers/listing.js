@@ -7,11 +7,11 @@ const geocodingClient = mbxGeocoding({ accessToken: mapToken });
 
 module.exports.indexListing = async (req, res) => {
   const allListing = await Listing.find({});
-  res.render("./listings/index.ejs", { allListing, currUser: req.user });
+  res.render("./listings/index.ejs", { allListing });
 };
 
 module.exports.renderNewListing = (req, res) => {
-  res.render("listings/new.ejs", { currUser: req.user });
+  res.render("listings/new.ejs",);
 };
 
 module.exports.postListing = async (req, res, next) => {
@@ -43,7 +43,7 @@ module.exports.showListing = async (req, res) => {
     req.flash("error", "Listing you requested for does not exist");
     res.redirect("/listings");
   }
-  res.render("listings/show.ejs", { listing ,currUser: req.user });
+  res.render("listings/show.ejs", { listing  });
 };
 
 module.exports.renderEditForm = async (req, res) => {
@@ -53,7 +53,7 @@ module.exports.renderEditForm = async (req, res) => {
     req.flash("error", "Listing you requested for does not exist");
     return res.redirect("/listings");
   }
-  res.render("listings/edit.ejs", { listing, currUser: req.user });
+  res.render("listings/edit.ejs", { listing });
 };
 
 module.exports.editListing = async (req, res) => {
