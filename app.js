@@ -88,9 +88,10 @@ app.use((req, res, next) => {
   next();
 });
 
-console.log("User session data:", req.user);
-console.log("DB_URL:", process.env.DB_URL);
-console.log("SECRET:", process.env.SECRET);
+app.use((req, res, next) => {
+  console.log("User session data:", req.user);
+  next();
+});
 
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
