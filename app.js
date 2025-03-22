@@ -49,9 +49,9 @@ app.get("/", (req, res) => {
 
 const store = MongoStore.create({
   mongoUrl: dbUrl,
-  crypto: {
-    secret: process.env.SECRET,
-  },
+  // crypto: {
+  //   secret: process.env.SECRET,
+  // },
   touchAfter: 24 * 3600,
 });
 
@@ -88,10 +88,10 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use((req, res, next) => {
-  console.log("User session data:", req.user);
-  next();
-});
+// app.use((req, res, next) => {
+//   console.log("User session data:", req.user);
+//   next();
+// });
 
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
