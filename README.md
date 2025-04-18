@@ -2,7 +2,7 @@
 
 **WanderHome** is a **full-stack web application** for booking unique stays and homestays across the globe. It follows the **MEEN stack** (MongoDB, Express, EJS, Node.js) and uses the **MVC (Model-View-Controller)** architectural pattern for clean code organization and scalability.
 
-![WanderHome Logo](./assets/wanderhome-logo.png)
+![WanderHome Logo](./assets/1.png)
 
 ---
 
