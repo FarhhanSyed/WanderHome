@@ -23,7 +23,7 @@ WanderHome offers users the ability to explore and book accommodations in variou
 - **Backend**: Node.js, Express.js
 - **Frontend**: EJS templating engine
 - **Database**: MongoDB (with Mongoose ODM)
-- **Authentication**: Passport.js (optional)
+- **Authentication**: Passport.js 
 - **Others**: Dotenv, Multer, Cloudinary, etc. (if used)
 
 ---
